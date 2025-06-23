@@ -24,7 +24,7 @@ const NoteList: React.FC<NoteListProps> = ({ notes }) => {
     <ul className={css.list}>
       {notes.map((note) => (
         <li key={note.id} className={css.listItem}>
-          <Link href={`/notes/${note.id}`} className={css.link}>
+          <Link href={`/notes/${note.id}`} scroll={false} className={css.link}>
             <h3 className={css.title}>{note.title}</h3>
           </Link>
           <p className={css.content}>{note.content}</p>
