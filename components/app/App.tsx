@@ -4,10 +4,10 @@ import { useState } from "react";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import { fetchNotes } from "../../lib/api";
 import NoteList from "../../components/NoteList/NoteList";
-import NoteModal from "../../components/NoteModal/NoteModal";
+import Modal from "../../components/Modal/Modal";
+import NoteForm from "../../components/NoteForm/NoteForm";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import Pagination from "../../components/Pagination/Pagination";
-// import css from "./App.module.css";
 import { useDebounce } from "use-debounce";
 
 const App = () => {
@@ -51,7 +51,11 @@ const App = () => {
         <NoteList notes={data.notes} />
       )}
 
-      {isModalOpen && <NoteModal onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && (
+        <Modal onClose={() => setIsModalOpen(false)}>
+          <NoteForm onClose={() => setIsModalOpen(false)} />
+        </Modal>
+      )}
     </div>
   );
 };
