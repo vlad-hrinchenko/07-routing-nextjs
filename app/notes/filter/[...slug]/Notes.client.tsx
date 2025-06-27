@@ -9,6 +9,7 @@ import Modal from "@/components/Modal/Modal";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import { fetchNotes } from "@/lib/api";
 import type { Note } from "@/types/note";
+import NoteForm from "@/components/NoteForm/NoteForm";
 
 interface NotesClientProps {
   notes: Note[];
@@ -70,7 +71,9 @@ export default function NotesClient({
       )}
 
       {isModalOpen && (
-        <Modal onClose={() => setIsModalOpen(false)}>Modal content here</Modal>
+        <Modal onClose={() => setIsModalOpen(false)}>
+          <NoteForm onClose={() => setIsModalOpen(false)} />
+        </Modal>
       )}
     </div>
   );
