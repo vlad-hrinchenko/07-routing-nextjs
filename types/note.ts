@@ -14,3 +14,4 @@ export interface PaginatedNotesResponse {
   totalPages: number;
   totalResults: number;
 }
+

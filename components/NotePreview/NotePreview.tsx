@@ -1,7 +1,8 @@
-// components/NotePreview/NotePreview.tsx
+"use client";
+
 import { useQuery } from "@tanstack/react-query";
-import { fetchNoteById } from "../../lib/api";
-import type { Note } from "../../types/note";
+import { fetchNoteById } from "@/lib/api";
+import type { Note } from "@/types/note";
 
 interface Props {
   noteId: number;

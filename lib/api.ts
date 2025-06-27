@@ -1,5 +1,5 @@
 import axios, { isAxiosError } from "axios";
-import { type Note, type NoteTag } from "../types/note";
+import { type Note, type NoteTag } from "@/types/note";
 
 export interface NewNoteContent {
   title: string;
@@ -33,13 +33,15 @@ const axiosConfig = axios.create({
 export const fetchNotes = async (
   search = "",
   page = 1,
-  perPage = 12
+  perPage = 12,
+  tag?: string
 ): Promise<PaginatedNotesResponse> => {
   const response = await axiosConfig.get<PaginatedNotesResponse>("/notes", {
     params: {
       page,
       perPage,
       ...(search && { search }),
+      ...(tag && tag !== "All" && { tag }),
     },
   });
   return response.data;
@@ -68,3 +70,4 @@ export const deleteNote = async (id: number): Promise<DeletedNoteInfo> => {
     throw new Error("Unknown error occurred while deleting note.");
   }
 };
+
