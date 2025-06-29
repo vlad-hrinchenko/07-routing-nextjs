@@ -1,7 +1,7 @@
 // ✅ FILE: app/notes/filter/@sidebar/default.tsx
 
 import Link from "next/link";
-import styles from "./Sidebar.module.css";
+import styles from "@/components/SidebarNotes/SidebarNotes.module.css";
 
 const tags = ["All", "Todo", "Work", "Personal", "Meeting", "Shopping"];
 
