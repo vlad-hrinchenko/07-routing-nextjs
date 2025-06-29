@@ -1,36 +1,22 @@
-"use client";
+// ✅ FILE: app/notes/filter/@sidebar/default.tsx
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import styles from "./Sidebar.module.css";
 
 const tags = ["All", "Todo", "Work", "Personal", "Meeting", "Shopping"];
 
 export default function DefaultSidebar() {
-  const pathname = usePathname();
-
   return (
-    <aside className={styles.sidebar}>
-      <nav>
-        <ul className={styles.list}>
-          {tags.map((tag) => {
-            const href =
-              tag === "All" ? "/notes/filter" : `/notes/filter/${tag}`;
-            const isActive = pathname === href;
-
-            return (
-              <li key={tag}>
-                <Link
-                  href={href}
-                  className={`${styles.link} ${isActive ? styles.active : ""}`}
-                >
-                  {tag}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-    </aside>
+    <nav>
+      <ul className={styles.menuList}>
+        {tags.map((tag) => (
+          <li key={tag} className={styles.menuItem}>
+            <Link href={`/notes/filter/${tag}`} className={styles.menuLink}>
+              {tag}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }
